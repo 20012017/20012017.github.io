@@ -91,13 +91,13 @@ public class CounterActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_counter);
   }
-  
+
   public void increaseButton(View view) {
 	  Button button = (Button) view;
 	  button.setText("1")
   }
 }
-``` 
+```
 
 With the high level test passing, the elements needed in order to create the implementation become clear.  There are two distinct elements here: something to increase a number and something to change the text of the button when the button is pressed.  Once these objects are defined, the goal becomes to test drive their development. This helped me greatly in separating Android the business logic because, once I knew the objects I needed, I knew that I should not have to touch the Activity class again until these objects had the behavior I expected, and simply needed to be integrated.
 
@@ -141,11 +141,11 @@ With the custom button in place, we can create the spy:
 public class ButtonSpy extends ExampleButton {
 
 	public boolean setTextWasCalled;
-	
+
 	public ButtonSpy() {
 		super(null);
 	}
-	
+
 	@Override
 	public void setText(String text) {
 		setTextWasCalled = true;
@@ -163,7 +163,7 @@ public class ExampleClickListener implements OnClickListener {
 	@Override
 	public void onClick(View view) {
 	}
-	
+
 }
 ```
 
@@ -182,8 +182,8 @@ public class ExampleClickListener implements OnClickListener {
 
 In a similar manner, the majority of Android elements can be test driven using doubles, as can the integration of all the elements that make up the application you build.
 
-As my experience with Android has grown, I've found it easier to see the granular elements of an application and, as a result, have found it easier to use a more familiar inside out TDD approach.  
+As my experience with Android has grown, I've found it easier to see the granular elements of an application and, as a result, have found it easier to use a more familiar inside out TDD approach.
 
-My first experience with Android was a challenge, however.  For whatever reason, I could not step back from the big picture.  I was too involved with Android, and because of this, I started on the wrong foot. My usual way of building an application up from the bottom up simply was not working, and it took me a while to adapt. Once I recognised that I was thinking about Android in a different way to how I usually think about an application, and I recognised that I had to allow for that, I was able to use what I already knew to facilitate a changed way of working.  
+My first experience with Android was a challenge, however.  For whatever reason, I could not step back from the big picture.  I was too involved with Android, and because of this, I started on the wrong foot. My usual way of building an application up from the bottom up simply was not working, and it took me a while to adapt. Once I recognised that I was thinking about Android in a different way to how I usually think about an application, and I recognised that I had to allow for that, I was able to use what I already knew to facilitate a changed way of working.
 
 Sometimes the way we are used to working is challenged.  Sometimes it simply isn't working for us.  It could be a new framework, it could be a new language, it could be a new environment, it could just be that we are approaching a problem in a different way.  Whatever the reason, to continue progressing we have to be open to work in different ways, and know that, often, we already have the tools we need to do so.
